@@ -211,7 +211,7 @@ func listTunnels(client *atunnels.Client) error {
 
 func getTunnel(client *atunnels.Client, args []string) error {
 	if len(args) < 1 {
-		return fmt.Errorf(i18n.TError("get_usage"))
+		return fmt.Errorf("%s", i18n.TError("get_usage"))
 	}
 
 	name := args[0]
@@ -240,7 +240,7 @@ func getTunnel(client *atunnels.Client, args []string) error {
 
 func createTunnel(client *atunnels.Client, args []string) error {
 	if len(args) < 2 {
-		return fmt.Errorf(i18n.TError("create_usage"))
+		return fmt.Errorf("%s", i18n.TError("create_usage"))
 	}
 
 	var name, protocol, localAddr string
@@ -280,7 +280,7 @@ func createTunnel(client *atunnels.Client, args []string) error {
 
 func deleteTunnel(client *atunnels.Client, args []string) error {
 	if len(args) < 1 {
-		return fmt.Errorf(i18n.TError("delete_usage"))
+		return fmt.Errorf("%s", i18n.TError("delete_usage"))
 	}
 
 	name := args[0]
@@ -295,7 +295,7 @@ func deleteTunnel(client *atunnels.Client, args []string) error {
 
 func getStats(client *atunnels.Client, args []string) error {
 	if len(args) < 1 {
-		return fmt.Errorf(i18n.TError("stats_usage"))
+		return fmt.Errorf("%s", i18n.TError("stats_usage"))
 	}
 
 	name := args[0]

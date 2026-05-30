@@ -149,7 +149,7 @@ func main() {
 		}()
 	}
 
-	log.Printf(i18n.TServer("all_started"))
+	log.Println(i18n.TServer("all_started"))
 
 	// Start cleanup goroutine if enabled
 	if cfg.Server.CleanupEnabled != nil && *cfg.Server.CleanupEnabled {
