@@ -132,7 +132,7 @@ func (c *Client) RestartTunnel(name string) error {
 func (c *Client) Health() (bool, error) {
 	data, err := c.doRequest("GET", "/health", nil)
 	if err != nil {
-		return false, nil
+		return false, err
 	}
 	return bytes.Contains(data, []byte("ok")), nil
 }
