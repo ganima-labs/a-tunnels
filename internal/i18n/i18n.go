@@ -102,6 +102,9 @@ func T(key string) string {
 	if !ok {
 		locale = locales["en"]
 	}
+	if locale == nil {
+		return key
+	}
 
 	keys := parseKey(key)
 
