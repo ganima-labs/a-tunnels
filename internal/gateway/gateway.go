@@ -230,7 +230,9 @@ func (g *Gateway) StartHTTP(ctx context.Context) error {
 	mux.HandleFunc("/", g.handleHTTPRequestRateLimited) // Use rate-limited version
 	mux.HandleFunc("/health", g.handleHealth)
 	mux.HandleFunc("/metrics", g.handleMetricsRateLimited)                           // Protect metrics with rate limiting
-	mux.HandleFunc(g.config.Shortener.BasePath, g.handleShortURLRedirectRateLimited) // Use configurable base_path
+	if g.config.Shortener.BasePath != "" {
+		mux.HandleFunc(g.config.Shortener.BasePath, g.handleShortURLRedirectRateLimited) // Use configurable base_path
+	}
 	mux.HandleFunc("/api/shorten", g.handleShortenURL)
 
 	g.httpServer = &http.Server{
@@ -258,7 +260,9 @@ func (g *Gateway) StartHTTPS(ctx context.Context) error {
 	mux.HandleFunc("/", g.handleHTTPRequestRateLimited) // Use rate-limited version
 	mux.HandleFunc("/health", g.handleHealth)
 	mux.HandleFunc("/metrics", g.handleMetricsRateLimited)                           // Protect metrics with rate limiting
-	mux.HandleFunc(g.config.Shortener.BasePath, g.handleShortURLRedirectRateLimited) // Use configurable base_path
+	if g.config.Shortener.BasePath != "" {
+		mux.HandleFunc(g.config.Shortener.BasePath, g.handleShortURLRedirectRateLimited) // Use configurable base_path
+	}
 	mux.HandleFunc("/api/shorten", g.handleShortenURL)
 
 	g.httpsServer = &http.Server{
